@@ -1,0 +1,184 @@
+% interactapasample.tex
+% v1.05 - August 2017
+
+\documentclass[]{interact}
+
+\usepackage{epstopdf}% To incorporate .eps illustrations using PDFLaTeX, etc.
+\usepackage[caption=false]{subfig}% Support for small, `sub' figures and tables
+%\usepackage[nolists,tablesfirst]{endfloat}% To `separate' figures and tables from text if required
+%\usepackage[doublespacing]{setspace}% To produce a `double spaced' document if required
+%\setlength\parindent{24pt}% To increase paragraph indentation when line spacing is doubled
+
+\usepackage[longnamesfirst,sort]{natbib}% Citation support using natbib.sty
+\bibpunct[, ]{(}{)}{;}{a}{,}{,}% Citation support using natbib.sty
+\renewcommand\bibfont{\fontsize{10}{12}\selectfont}% To set the list of references in 10 point font using natbib.sty
+
+%\usepackage[natbibapa,nodoi]{apacite}% Citation support using apacite.sty. Commands using natbib.sty MUST be deactivated first!
+%\setlength\bibhang{12pt}% To set the indentation in the list of references using apacite.sty. Commands using natbib.sty MUST be deactivated first!
+%\renewcommand\bibliographytypesize{\fontsize{10}{12}\selectfont}% To set the list of references in 10 point font using apacite.sty. Commands using natbib.sty MUST be deactivated first!
+
+\theoremstyle{plain}% Theorem-like structures provided by amsthm.sty
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newtheorem{notation}{Notation}
+
+\begin{document}
+
+\articletype{Manuscript Submission to \emph{Building Research and Information} Journal}% Specify the article type or omit as appropriate
+
+\title{Spacematch: Improving flexible, activity-based work spaces using occupant personal environmental quality preferences and IoT data}
+
+\author{Tapeesh Sood\textsuperscript{a}, 
+Prageeth Jayathissa\textsuperscript{a},
+Patrick Janssen\textsuperscript{b},
+and Clayton Miller\textsuperscript{a}$^{\ast}$\thanks{$^\ast$Corresponding author email: clayton@nus.edu.sg}\\
+\vspace{6pt}
+\textsuperscript{a}{\em Building and Urban Data Science (BUDS) Lab, Department of Building, School of Design and Environment (SDE), National University of Singapore (NUS)};\\
+\textsuperscript{b}{\em Department of Architecture, School of Design and Environment (SDE), National University of Singapore (NUS)}
+}
+
+\maketitle
+
+\begin{abstract}
+Modern commercial building management are embracing the concept of activity-based work spaces. This strategy improves the spatial efficiency of office work environments and reduces the cost per occupant. However, the impacts on the personal satisfaction of those occupants is not always positive. Occupants have lost a sense of desk ownership, more time is spent finding an optimal work space, and environmental comfort is often one-size fits all. The personal indoor environmental quality (IEQ) and wellness aspects of office work spaces are important to the productivity, health, and satisfaction of those occupants. This paper describes a new approach to enhancing activity-based work spaces that learns the environmental comfort preferences of occupants and matches them with a catalogue of available work spaces. This recommendation system empowers occupants to maximize their comfort and efficiency and enables operations staff to optimize the control of their comfort creation systems (HVAC, lighting, etc.) by grouping occupants with similar preferences. This approach is illustrated through a pilot implementation on a university campus using a smart phone application.
+
+\end{abstract}
+
+\begin{keywords}
+Co-working; Personal environmental comfort; Spatial efficiency; Recommendation systems; Activity-based work spaces
+\end{keywords}
+
+
+\section{Introduction}
+Activity-based working (ABW) is a major movement in commercial buildings. In these strategy, occupants have no permanent workstation; instead, they are given a range of space choices based on their activity and immediate needs. This space planning strategy, also known a \emph{hot desk} strategy, is becoming more common as a means of increasing the space use utilization of offices. An extensive literature review found that ABW results in an increase of interaction, communication, and control of time \citep{Engelen2018IsReview}. However, the same study found that these spaces can results in reductions of occupant concentration and privacy. ABW is a common strategy in the growing industry of co-working spaces by companies such as WeWork\textsuperscript{\textregistered}. A large recent survey of co-working spaces show that the main motivations for people to work in a co-working space are that a workplace outside their home allows access to an inspiring work environment where the accommodation is affordable \citep{Weijs-Perree2018AnalysingCharacteristics}.
+
+Despite the advantages, activity-based working has drawbacks. A study focused on a sociological analysis of ABW have shown a "loss of everyday ownership of the work space gives rise to particular practical and social tensions and shifts hot-deskers’ identification with the organization \cite{Hirst2011SettlersHot-desking}." Another study found lower than expected satisfaction with ABW environments due to many works rarely switching between different activity settings \citep{Hoendervanger2016FlexibilityEnvironments}. These challenges motivate the development of techniques that solidify the space and social advantages ABW while increasing the probability that an occupant will find and use the right space for them at the right time.
+
+\subsection{Indoor environmental comfort in buildings}
+In addition to space use allocation, indoor environmental comfort is at the forefront of building performance analysis. A recent survey in 2012 of 52,980 occupants in 351 office buildings found that 50\% of the occupants were dissatisfied with their indoor environment \citep{Frontczak2012QuantitativeDesign}. Occupant dissatisfaction can result in health impacts, increased sick days, and poor productivity \citep{MiltonDonaldK.P.MarkGlencross2000}. The over-conditioning and over-sizing of comfort control systems also has an impact on energy, and therefore the carbon emissions of buildings as well.
+
+Research in comfort for indoor occupants has accelerated over the last twenty years in order to address these challenges. One of the many paradigm shifts has been the movement away from physically-based deterministic models towards adaptive comfort models \citep{Ferrari2012AdaptiveIndices, Nicol2013AdaptiveWorld, vanHoof2010ThermalPractice}, which rely heavily on human behaviour. According to these models, discomforting changes in thermal environment are followed by behavioural change in people to restore comfort. Such actions could include reducing individual activity levels or even opening a window. The main effect of such models is to increase the range of conditions that designers can consider as comfortable, for instance naturally ventilated buildings in the tropics, where occupants have a greater degree of control over their thermal environment. 
+
+Despite these advancements, even adaptive comfort models still have a one-size-fits-all approach that ignores the personal aspect of comfort; the fact that human perception and personality also influence satisfaction. This status-quo approach to environmental comfort is like expecting all people to have the similar preferences for food, music, or style; these all subjective attributes of a person’s personality. Further work on these adaptive models is needed to identify comfort preferences on an individual basis and not only based on the thermal conditions. In an effort to address these points, researchers and building owners have started installing a wide range of Internet-of-Things (IoT) devices that can measure various environmental conditions such as light, noise, and particulates levels, in addition the conventional temperature and humidity metrics. Figure~\ref{iot-example} illustrates several examples of environmental sensor data from a building.
+
+These IoT sensors are becoming low cost and ubiquitous, but these data are often not utilized to their full potential. Comfort models, even adaptive ones, only set thresholds to which these sensor data points can compared. The key element in putting these data in context is subjective and physiological feedback from actual people. Collecting data from humans who inhabit the built environment would empower more specialized and nuanced comfort models to be developed in a scalable way.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.8]{figures/Fig1a.jpg}
+\caption{Conventional IoT environmental quality data} \label{iot-example}
+\end{figure}
+
+\subsection{Building systems’ response to indoor environmental challenges}
+In addition to the work in comfort models, a large amount of research has also been done to improve the systems that respond to these comfort needs. Various mechanical systems technologies such as radiant systems and decentralized and personalized ventilation attempt to address comfort problems. These contemporary innovations focus on the ability of a building to adapt to its occupants by tracking them and modifying each person's immediate personal climate to meet their individual needs \citep{Brager2015EvolvingComfort}. 
+
+Personalized control approaches are problematic as the spatial resolution of most existing climate, lighting and noise control technologies is not great enough in flexibility and responsiveness to make this approach feasible. Even more innovative, decentralized and personalized comfort systems are unable to create the response and resolution needed to create individualized comfort zones in a practical way. Additionally, smaller and more decentralized systems create more maintenance tasks and complexity within the building systems [cite vesely et. al.].
+
+To meet these challenges of decentralization, a balance needs to occur between personalizing spaces and maintaining the economies of scale that centralized systems provide. Creating small zones of personal comfort for all occupants should be used sparingly in very specific space use types, while most other spaces can be conditioned to meet the needs of a subgroup of people 
+
+\subsection{Learning an occupant’s preferences and recommending a space that matches their personality}
+Adaptive comfort has long been a vision of the building industry from the perspective of the occupants \emph{tolerating} the potentially sub-optimal conditions that a comfort control system provides \citep{Nicol2013AdaptiveWorld}. This paper outlines a vision of the word \emph{adaptive} encompassing the ability for occupants to make an informed decision about where they spend time. A previous study has use occupancy data to attempt to optimize the allocation of hot desk spaces using simulation and occupancy sensors \citep{Cooper2017AnData}.
+
+This paper seeks to address each of the previously-mentioned challenges: collecting larger amounts of personalized data in a way that is useful to an occupant, reducing the need for complex and problematic personalized comfort systems, and impacting the growing trend of activity-based work spaces in the building industry. 
+
+In this paper, we give an overview of the development of the concept of Spacematch: an artificial intelligence-driven (AI) spatial comfort suggestion system that will guide occupants to zones that match their environmental comfort preferences. These zones will be controlled according to the needs of a certain type of environmental preference personality, or clusters of people with similar needs. These comfort personality types will be created through an extensive set of experiments using environmental Internet-of-Things (IoT) sensor nodes combined with user feedback from an innovative space-booking smart phone application. This app will give occupants the ability to find and reserve spaces. In addition, the plug loads for the user would be turned on automatically upon starting their work session by scanning a QR code. Their power consumption would be monitored and reported throughout their time at the desk. Through this useful booking process, occupants will also be given a chance to leave a star rating of their thermal, visual and aural comfort experience within their individual space. This rating can be combined with an array of IoT sensor data sources. These type of sensors measure indoor temperature, humidity, various gases, noise, lighting, and presence levels. An individual’s star rating history will begin to develop a profile of their comfort preferences as combined with the measured data from their environment. The data from numerous study participants will be clustered to create the phenotypes of comfort that could be grouped into the same areas. Once the model recognizes what type of comfort personality a person has, the artificial intelligence model will then be used to predict what spaces best match that individual and are available to be used in the time-frame desired. This type of trained classification model is the similar to the algorithms that organizations like Amazon\textsuperscript{\textregistered} use to match products to potential consumers based on their history. To the authors' knowledge, this is the first study to use a recommendation system driven by sensor data and thermal comfort feedback to power an ABW strategy.
+
+\section{Methodology}
+The hypothesis of this recommendation system is to test whether certain groups of occupants can be segmented according to their comfort preferences and whether this segmentation is realistic in the context of an actual building case study. This platform is designed test whether suggesting spaces that match a person’s previous preferences has an impact on their satisfaction as compared to a baseline level of satisfaction for an activity-based scenario. We also want to test whether people’s comfort perceptions match the physiological data from the environmental data from the IoT sensors. This approach is significant as it creates an unprecedented amount of data that can quantify thermal comfort personality that tests a new method of designing and allocating space in buildings. 
+
+\subsection{Simplified conceptual example}
+\begin{figure}
+\centering
+\includegraphics[scale=0.3]{figures/ieq_iot_annotated.jpg}
+\caption{Annotation of IoT data with subjective human feedback and creation of thermal comfort personalities} \label{iot-example-annotated}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.3]{figures/conventional_vs_recommedation.jpg}
+\caption{Theoretical example of people utilizing an activity-based work space layout (Top); Theoretical example of clustering people according to their comfort personalities (Bottom)} 
+\label{space-plans}
+\end{figure}
+
+In this section, we describe a simplified scenario that illustrates the concept of a spatial recommendation system. Imagine a scenario in which people can assign a feedback rating to a space based on their thermal, aural, and visual comfort. People would use a smart phone app to reserve a space and then leave comfort feedback in the form of a five-star rating when they finish using the space. This simple feedback on a useful process is similar to the methods that commonly-used apps like Uber and Airbnb utilize. These star ratings are used to annotate collected data from IoT. Figure~\ref{iot-example-annotated} illustrates the same time range as Figure~\ref{iot-example}, however the time range is segmented into zones of utilization. These zones are given specific ratings by three theoretical people: Persons A, B, and C. These three people respond to the conditions in each zone in different ways. Their preferences are recorded through this process, providing a way to develop a personality type for each of them. Person A enjoys a dim, quiet, and moderately conditioned space, while Person B is into a more active environment with a bit of noise and brightness. Person C likes a cooler environment that is not dead silent. As the person updates their star ratings, their preferences are used to build a recommendation engine that can predict what space will best meet the needs of the person.
+
+With these three theoretical personalities, we can further develop this scenario in the context of an activity-based workstations. Figure~\ref{space-plans} illustrates the status quo for these types of layouts. People basically sit down in various spots throughout the floor plan. Sometimes aware of their comfort needs, but often just sitting anywhere there’s an open spot. To create so many individual personal comfort zones would require dozens of individual systems and the person’s control and preferences would need to be collected somehow. We hypothesize that a recommendation engine trained with people’s preferences would be able to group people with the same personality type as seen in Figure~\ref{space-plans}. These people are given information that guides them to spots that are more likely to satisfy them. In this case, there are only three major comfort zones, thus the mechanical, lighting and envelope systems can respond with less complexity and less equipment. And the occupants will also achieve a higher level of satisfaction on average.
+
+\begin{table}[]
+\centering
+\begin{tabular}{lllll}
+Example Personality & A & B & C \\
+\hline
+Temperature & Pleasant & Warm & Cold \\
+Noise & Quiet & Noisy & Moderate \\
+Lighting & Dim & Bright & Ambient
+\end{tabular}
+\caption{Example indoor environmental quality personalities}
+\label{personality-types}
+\end{table}
+
+\section{Implementation}
+In order to show Spacematch in a real-world scenario, we designed a pilot study in the Architecture department at the National University of Singapore.
+
+\subsection{Case study and participant overview}
+
+Various test case areas were be identified across campus that are applicable to the booking nature of the application. This includes the hot-desking spaces allocated for the SDE renovations as well area that are often utilized temporarily by staff, students or visitors. The deployment of a QR code sticker will occur at these locations and various signage advertising the application as a useful means of securing a place to work from afar will be explained. We will install Wifi-enabled Indoor Environmental Quality (IEQ) sensor nodes that will measure temperature, humidity, CO2, VOC, particulates, noise, light, and presence levels. 
+
+This set of experiments included XX individuals and they will be recruited from primarily amongst the staff and students of the School of Design and Environment (SDE), however all NUS students, staff and faculty were be considered. These participants will then utilize a developed smart phone application known as SpaceMatch to find and book spaces to set during the renovation of the SDE complex. SpaceMatch is a progressive web application, which means that it is technically a website, but has an appearance and functions similar to that of an ‘app’. SpaceMatch enables a user to scan a QR code located on the desk or on the wall of the space in order to make a booking, , leave feedback about thermal comfort, and learn more about the space in terms of sustainability features. Completing this task will also inform the participant’s location at that point in time. The participant will be aware that their location is recorded upon checking into the space. Upon completion of the use of a space, the participants would be asked to give feedback about the space using the questions seen in Figure 7. There will be three questions on a simplified three point scale. The first pane will ask if the participant is too hot, comfy, or too cold; the next question asks if the participant it is too quiet, comfy, or too noisy; and the last will ask if it is too dark, comfy, or too bright. The survey takes less than 30 seconds to complete as it is three simple feedback questions.
+
+[here insert screenshots of the latest spacematch demo version]
+
+This pilot field study was be conducted for xx weeks. Training  included a tutorial on how to use the application as well as details of the research study. This could occur in the days before the experiment begins or on the initial day. They are not required to utilize the desks on campus in any different way than their usual habits. They will be asked to simply utilize the application whenever they use a space in the test area in the SDE buildings. Some of the participants will carried a SENSg sensor device that measures temperature, pressure, sound, light, inertial measurement, step count, indoor/outdoor time, and travel pattern. Travel patterns is the approximate location of the subject based on Wifi triangulation. Participants will be informed in the consent process that the SENSg sensor will track their location. The participants will be asked to carry the SENSg devices with them during daytime hours, when they are on NUS campus at the very least, but are welcome to wear the device during the three month period. The SENSg device was designed and developed by researchers from the Singapore University of Technology and Design (SUTD) as a “Laboratory on a Lanyard” to enable Singapore’s National Science Experiment (https://nse.sg/sensg/about-sensg/). These 15 participants will also install a second smartphone application called FollowMee to be used for the 3 month period (installed on personal smartphones) (https://www.followmee.com/) that will track their location inside or outside the test case zone during daytime hours on weekdays from during the hours in which they are scheduled to be on the NUS campus or on their way to campus. This app uses the GPS of the participant’s smartphone for this tracking. 
+
+The participants can decide when the application starts and stops tracking by toggling the option in the application. They will be asked to set the start and stop times based on when they are on their way to campus or on their way home from campus. Participants’ location indoors while in the test zone will be based on the space that they utilize through their scanning of the QR code. Scanning the QR code supplements the GPS-based tracking of the participant that is done through the Followmee app. This app uses the GPS of the participant’s smart phone for this tracking. This supplementary data can inform where exactly within the building the participant is located - this is a knowledge that GPS often can’t provide. The location information and environmental quality feedback will be collected through their interaction with the space, will be coded with a unique, anonymized identifier. 
+
+Both of the smart phone applications (SpaceMatch and Followmee) did not collect any personally identifiable information. All personal information will be collected in person upon signing the consent form. Researchers might already have the name and email address of the test participants before signing the consent however these data would not be included in the personal data set until the consent form has been signed. The personal data set will be kept separate from the research data. The smart phone application will be coded to the personal information using an anonymous unique identifier token that cannot personally identify the test participants. The survey data collected through the smart phone applications was linked with the other data collected in the study through an anonymous token.
+
+\subsection{Spatial implementation scenario and data collection}
+
+QR codes were dispersed amongst the desks in the architecture department at the National University of Singapore.
+
+[here show the test setup implementation in floor plans and photos of the QR codes]
+
+\subsection{Thermal comfort personalities detected}
+
+This will be about unexpected factors or new findings which were not accounted for initially in the experiment but influenced human comfort perception in co working environments
+
+\subsection{Challenges and next steps}
+
+This will be about the following:
+\begin{itemize}
+  \item Challenges experienced in field study implementation
+  \item Challenges in collection of user feedback in intuitive ways
+ \end{itemize}
+
+\section{Conclusion}
+
+Preliminary data shows X.
+
+\begin{itemize}
+	\item Segregation and clustering of users based on thermal comfort personalities
+    \item Suggesting spaces that match an individuals previous preferences to have an impact on their satisfaction as compared to a baseline level satisfaction for a co working environment
+    \item Design, allocation and management of spaces based on thermal comfort personalities in the future
+\end{itemize}
+
+\subsection{Future work}
+
+
+
+\section*{Acknowledgement(s)}
+
+
+\bibliographystyle{unsrtnat}
+\bibliography{spacematch}
+
+\end{document}
