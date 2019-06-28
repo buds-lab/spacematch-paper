@@ -35,7 +35,7 @@
 
 \articletype{Manuscript Submission to \emph{Building Research and Information} Journal}% Specify the article type or omit as appropriate
 
-\title{Spacematch: Improving flexible, activity-based work spaces using occupant personal environmental quality preferences and IoT data}
+\title{Spacematch: Improving comfort and spatial utilization of workplaces using occupant personal environmental quality preferences, IoT data and machine learning}
 
 \author{Tapeesh Sood\textsuperscript{a},
 Patrick Janssen\textsuperscript{b},
@@ -51,9 +51,7 @@ and Clayton Miller\textsuperscript{a}$^{\ast}$\thanks{$^\ast$Corresponding autho
 %Modern commercial building management are embracing the concept of activity-based work spaces. This strategy improves the spatial efficiency of office work environments and reduces the cost per occupant. However, the impacts on the personal satisfaction of those occupants is not always positive. Occupants have lost a sense of desk ownership, more time is spent finding an optimal work space, and environmental comfort is often one-size fits all. The personal indoor environmental quality (IEQ) and wellness aspects of office work spaces are important to the productivity, health, and satisfaction of those occupants. This paper describes a new approach to enhancing activity-based work spaces that learns the environmental comfort preferences of occupants and matches them with a catalogue of available work spaces. This recommendation system empowers occupants to maximize their comfort and efficiency and enables operations staff to optimize the control of their comfort creation systems (HVAC, lighting, etc.) by grouping occupants with similar preferences. This approach is illustrated through a pilot implementation on a university campus using a smart phone application.
 
 
-Organizations face enormous pressure to drive down costs by maximizing spatial utilization in workplaces. But its implementation is generally perceived as taking away what occupants need to be productive in exchange for cost savings by operators. Moreover, there are risks in pushing this too hard such that it damages occupant comfort, productivity and satisfaction. This paper showcases 'Spacematch' - an artificial intelligence driven platform that merges real-time personal environmental preferences of occupants, indoor environmental quality data and physical space data to improve occupant comfort and spatial utilization of workplaces. This new approach connects occupants with a catalog of available work desks, enables them to easily provide environmental feedback during their use and supports the operations staff to optimize efficiency of comfort creation systems (HVAC, lighting, etc.) and space, by grouping occupants with similar preferences. The approach study also covers a pilot implementation with 25 research participants over a month at a university campus - and shares the challenges faced during implementation as well as the next steps in the advanced development of the platform.
-
-Gathering humn 
+Organizations face enormous pressure to drive down rental costs by maximizing spatial utilization in workplaces. But ill-conceived implementation of this strategy generally results in taking away what occupants need to be comfortable in exchange for cost savings by operators. Moreover, there are risks in pushing this too hard such that it damages occupant comfort, productivity and satisfaction. This paper showcases 'Spacematch' - an artificial intelligence driven platform that merges real-time personal environmental preferences of occupants, indoor environmental quality and physical space data to improve occupant comfort and spatial utilization of workplaces. This new approach connects occupants with a catalog of available work desks, enables them to easily provide environmental feedback during use and supports the operations staff to optimize efficiency of comfort creation systems (HVAC, lighting, etc.) and space, by grouping occupants with similar preferences. The study covers a pilot implementation with 25 research participants over a month at a university campus - and shares the challenges faced during implementation as well as the next steps in the advanced development of the platform.
 
 \end{abstract}
 
@@ -62,10 +60,12 @@ Co-working; Personal environmental comfort; Spatial efficiency; Recommendation s
 \end{keywords}
 
 
+
+
 \section{Introduction}
 Workplaces today face challenges as operators look to offset high rental costs by growing occupant headcount within their existing footprint. Equally, rapid changes in technology and nature of work in the the past few years have led them to rethink spatial density and utilization. 
 
-But to quantify workplace occupant density and space utilization, operators largely continue the use of "static" approaches such as cost per square feet dedicated to a workstation or an occupant. This is problematic, as static measures generally result in taking away amenities which actually make occupants comfortable and productive in their work environments - like replacement of cubicles with benches, removal of informal collaboration spaces for more work desks or taking away storage space all together. Taking away such amenities in exchange for spatial efficiency or cost savings is usually perceived as a quick fix by operators with least regard for the wellbeing of occupants {need reference}.
+But to quantify workplace occupant density and space utilization, operators largely continue the use of "static" approaches such as cost per square feet dedicated to a workstation or an occupant. This is problematic, as these measures generally result in taking away amenities which let occupants to be comfortable and productive in their work environments - like replacement of cubicles with benches to accommodate a larger headcount, removal of informal collaboration spaces for more work desks or taking away storage space all together. Taking away such amenities in exchange for spatial efficiency or cost savings is usually perceived as a quick fix by operators with least regard for the wellbeing of occupants {need reference}.
 
 However, new and dynamic ways of working are evolving in response to these challenges. These new ways of working aspire to simultaneously balance a building operator's demands with the needs of the occupants through enabling occupant mobility in workplaces. In most approaches the occupant is able to work flexibly through choosing different places within the workplace rather than being assigned a fixed desk as the one primary place of work. Once occupants are dynamic in the ways they use space, its easier to recapture underutilized spaces by operators. When executed well, this improves the real estate bottom line whilst enhancing overall occupant comfort, choice and control in workplaces {need reference}. Workplace strategies of the kind are referred to differently by industry stakeholders, some frequently use references are hot-desking, co-working, desk sharing, flexible working, activity based working, office hoteling and so on. Fit a line about industry - Wework and others. Though each strategy varies slightly from the other in its offering - most promise benefits of improved spatial utilization and cost savings for operators while increasing overall comfort, control and choice for occupants \citep{Engelen2018IsReview}. %Equally, a large recent survey of spaces utilizing one such strategy showed that the main motivations for occupants to work in such a workplace is because it allowed access to an inspiring work environment \citep{Weijs-Perree2018AnalysingCharacteristics}.
 
@@ -80,6 +80,10 @@ As organizations evolve they are rightfully nervous of ill-conceived implementat
 
   
 %These challenges motivate the development of techniques that solidify the space and social advantages ABW while increasing the probability that an occupant will find and use the right space for them at the right time.
+
+
+
+
 
 \subsection{Indoor environmental comfort in buildings}
 %In addition to space use allocation, indoor environmental comfort is at the forefront of building performance analysis.
@@ -108,12 +112,17 @@ Despite these advancements, even adaptive comfort models still have a one-size-f
 %\caption{Conventional IoT environmental quality data} \label{iot-example}
 %\end{figure}
 
+
+
+
 \subsection{Building systems’ response to indoor environmental challenges}
 In addition to the work in comfort models, a large amount of research has also been done to improve the systems that respond to these comfort needs. Various mechanical systems technologies such as radiant systems and decentralized and personalized ventilation attempt to address comfort problems. These contemporary innovations focus on the ability of a building to adapt to its occupants by tracking them and modifying each person's immediate personal climate to meet their individual needs \citep{Brager2015EvolvingComfort}. 
 
 Personalized control approaches are problematic as the spatial resolution of most existing climate, lighting and noise control technologies is not great enough in flexibility and responsiveness to make this approach feasible. Even more innovative, decentralized and personalized comfort systems are unable to create the response and resolution needed to create individualized comfort zones in a practical way. Additionally, smaller and more decentralized systems create more maintenance tasks and complexity within the building systems \citep{VESELY2017223} .
 
-To meet these challenges of decentralization, a balance needs to occur between personalizing spaces and maintaining the economies of scale that centralized systems provide. Creating small zones of personal comfort for all occupants should be used sparingly in very specific space use types, while most other spaces can be conditioned to meet the needs of a subgroup of people 
+To meet these challenges of decentralization, a balance needs to occur between personalizing spaces and maintaining the economies of scale that centralized systems provide. Creating small zones of personal comfort for all occupants should be used sparingly in very specific space use types, while most other spaces can be conditioned to meet the needs of a subgroup of people. 
+
+
 
 
 \subsection{Collecting human comfort feedback in buildings}
@@ -124,6 +133,10 @@ Even though IoT sensors continue becoming low cost and ubiquitous, the data from
 However, what may suit one group of occupants may be unacceptable for others. Even though its understood that differences in individual comfort preferences exist \cite{WANG2018181}, their quantitative identification presents significant challenges in field conditions.
 
 One way to tackle this situation is to increase the frequency and volume of building occupant user feedback. The contemporary methods of feedback collection include structured surveys or interviews - on-line or off-line, in person or remote. However, conventional approaches have a number of shortcomings  \cite{oecd}. One key drawback of these methods in the field is scalability - it’s difficult to collect large sample data sets due to the administrative, financial and other operational overheads of conventional approaches. Furthermore, other factors such as lack of knowledge (respondents do not know the answer to a question, but answer it anyway), lack of motivation (respondents may not process questions fully) and failures in communication (survey questions may be unclear or misunderstood) are usually associated with increased risk of biases and respondent heuristics in survey responses  \cite{bradburn2004asking}.
+
+
+
+
 
 \subsection{Learning an occupant’s preferences and recommending a space that matches their preferences}
 Adaptive comfort has long been a vision of the building industry from the perspective of the occupants \emph{tolerating} the potentially sub-optimal conditions that a comfort control system provides \citep{Nicol2013AdaptiveWorld}. This paper outlines a vision of the word \emph{adaptive} encompassing the ability for occupants to make an informed decision about where they spend time. A previous study has use occupancy data to attempt to optimize the allocation of hot desk spaces using simulation and occupancy sensors \citep{Cooper2017AnData}.
