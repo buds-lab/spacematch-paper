@@ -179,7 +179,7 @@ For flexible workspace operators, it facilitates merging personalized environmen
 \section{Methodology}
 
 
-A pilot study was designed to test SpaceMatch in field conditions with 25 research participants at SDE. A total of 1182 environmental feedback points were collected over a month. A total of 36 desks in six different zones, split between two buildings, were identified for pilot implementation as shown in Figure \ref{fig:pilot}. Differences in average temperature, light, noise levels, desks availability and zone accessibility were important considerations in selecting each zone for the experiment. Desks in each zone were arranged in proximity of fixed sensors measuring seven attributes in real-time: temperature, humidity, noise, light, carbon-dioxide, volatile organic compounds and presence. Each zone offered flexible work desks--research participants weren't assigned any desks---but their arrangement differed slightly. In some zones, desks were arranged to promote collaboration - the desks were aligned such that participants could face each other while working. In others, the arrangement enabled solitary, personal work. Each desk was identified through a unique label containing the desk number, room name and a QR code for connecting the desk to the progressive web application as shown in Figure \ref{framework}.
+A pilot study was designed to test SpaceMatch in field conditions with 25 research participants at SDE. A total of 1182 environmental feedback points were collected over a month. A total of 36 desks in six different zones, split between two buildings, were identified for pilot implementation as shown in Figure \ref{pilot}. Differences in average temperature, light, noise levels, desks availability and zone accessibility were important considerations in selecting each zone for the experiment. Desks in each zone were arranged in proximity of fixed sensors measuring seven attributes in real-time: temperature, humidity, noise, light, carbon-dioxide, volatile organic compounds and presence. Each zone offered flexible work desks--research participants weren't assigned any desks---but their arrangement differed slightly. In some zones, desks were arranged to promote collaboration - the desks were aligned such that participants could face each other while working. In others, the arrangement enabled solitary, personal work. Each desk was identified through a unique label containing the desk number, room name and a QR code for connecting the desk to the progressive web application as shown in Figure \ref{framework}.
 
 \begin{figure}
 \centering
@@ -188,9 +188,9 @@ A pilot study was designed to test SpaceMatch in field conditions with 25 resear
 \label{framework}
 \end{figure}
 
-Each participant in the experiment used the interactive mobile application to reserve and use work desks as shown in Figure \ref{fig:app}. Users could search for available work desks within two buildings at SDE. Once they chose the building, users could progress to select the room and desk to use. Users were provided with more information about the room and real-time indoor environmental quality through the ``Info`` and ``Dashboard`` features of the application as shown in Figure \ref{fig:app}b. 
+Each participant in the experiment used the interactive mobile application to reserve and use work desks as shown in Figure \ref{app}. Users could search for available work desks within two buildings at SDE. Once they chose the building, users could progress to select the room and desk to use. Users were provided with more information about the room and real-time indoor environmental quality through the ``Info`` and ``Dashboard`` features of the application as shown in Figure \ref{app}b. 
 
-The application provided options between using the desk right now or reserving it for later. To start using a desk, users had to scan the desk's QR code label using an inbuilt QR code scanner in the application. A minimum two hour time slot for a work session was provided for each desk booking. Users could also choose to extend their work sessions in two hour multiples as per their requirements using the application. During use, the application prompted users to provide environmental feedback for temperature, light and noise levels through a 3-point scale as shown in Figure \ref{fig:app}d. Prompts were configured such that the application nudged users to provide feedback at the start, finish and once every half an hour of a typical two hour work session. 
+The application provided options between using the desk right now or reserving it for later. To start using a desk, users had to scan the desk's QR code label using an inbuilt QR code scanner in the application. A minimum two hour time slot for a work session was provided for each desk booking. Users could also choose to extend their work sessions in two hour multiples as per their requirements using the application. During use, the application prompted users to provide environmental feedback for temperature, light and noise levels through a 3-point scale as shown in Figure \ref{app}d. Prompts were configured such that the application nudged users to provide feedback at the start, finish and once every half an hour of a typical two hour work session. 
 
 \begin{figure}
 \centering
@@ -234,26 +234,55 @@ The data from the users and fixed sensors was aggregated using a cloud-based, ti
 
 %Both of the smart phone applications (SpaceMatch and Followmee) did not collect any personally identifiable information. All personal information will be collected in person upon signing the consent form. Researchers might already have the name and email address of the test participants before signing the consent however these data would not be included in the personal data set until the consent form has been signed. The personal data set will be kept separate from the research data. The smart phone application will be coded to the personal information using an anonymous unique identifier token that cannot personally identify the test participants. The survey data collected through the smart phone applications was linked with the other data collected in the study through an anonymous token.
 
-\subsection{Spatial implementation scenario and data collection}
+%\subsection{Spatial implementation scenario and data collection}
 
 %QR codes were dispersed amongst the desks in the architecture department at the National University of Singapore.
 
 
-\subsection{Thermal comfort personalities detected}
+%\subsection{Thermal comfort personalities detected}
 
-This will be about unexpected factors or new findings which were not accounted for initially in the experiment but influenced human comfort perception in co working environments
+%This will be about unexpected factors or new findings which were not accounted for initially in the experiment but influenced human comfort perception in co working environments
 
-\subsection{Challenges and next steps}
+%\subsection{Challenges and next steps}
 
-This will be about the following:
-\begin{itemize}
-  \item Challenges experienced in field study implementation
-  \item Challenges in collection of user feedback in intuitive ways
- \end{itemize}
+%This will be about the following:
+%\begin{itemize}
+ % \item Challenges experienced in field study implementation
+  %\item Challenges in collection of user feedback in intuitive ways
+ %\end{itemize}
+\section{Results}
+\section{Discussion}
+
+\subsection{Selecting a field based experiment setup}
+Traditionally, thermal comfort research methodology has relied heavily on laboratory-based methods (climate chambers) as compared to its field-based alternative. Past studies have classified these two as separate approaches---deterministic"engineering" approach vs. holistic person-environment systems "architectural" approach. The two approaches differ based on the disciplines which conduct them and their perception of the---dynamic or static---relationship between occupant and buildings \ref{dedear}.
+
+However, models derived from a deterministic approach, work well only within limited conditions, usually centrally controlled air-conditioned spaces, as compared to holistic person-environment systems models that take into consideration a wider range of conditions that building occupants may choose to make themselves comfortable, such as in naturally ventilated buildings \ref{dedear2, de1998developing}. 
+
+Since one of goals of this study is to understand the dynamic nature of occupant comfort in different environmental and spatial contexts - the research team chose a field based experiment setup to provide higher ecological validity to the findings compared to a lab experiment \cite{andrade2018internal}. 
+
+
+%In the past, the trade-off in field studies has usually been in terms of the precision with which physical environmental measurements are performed. In response to these shortcomings, the gradual development of laboratory-grade field instruments and enhanced protocols have made comfort data obtained in the field very comparable to their laboratory counterparts \ref{dedear, dedear2}. Given this advantage, most new thermal comfort related research studies are field-based - conducted in actual buildings under routine conditions and diverse samples of "real" occupants.  
+
+
+%The goals for conducting comfort assessments under controlled lab settings can be different from conducting the same in field conditions. The former is better suited for dispositional approaches - where the surrounding environment doesn't effect participant behavior, whereas the latter is focused on situational approaches - where behavior is dependent on the surrounding context.
+%Given that one aim of this study was to understand the dynamic nature of occupant comfort in different environmental and spatial contexts, the research team chose a field based experiment setup to provide higher ecological validity to the findings compared to a lab experiment \cite{andrade2018internal}.
+
+\subsection{Findings from large data and a 3-point scale}
+
+Generalizing findings for the larger population using detailed surveys or interview results from a small group of participants was a trusted method for comfort assessments in building research in the past. However with new technologies and modern data capabilities, collection, processing and analysis of large data sets has become easier. That's why this study utilizes QR codes, an interactive mobile application and time-series database infrastructure to collect and process a relatively large comfort assessment data set in a short time. To limit subjectivity and make it easy for participants to provide feedback in field conditions, the team used a 3-point comfort scale rather than the traditional 7-point comfort scale. This not only saved participant's effort and time in the field but also helped channelize and organize data streams for the research team efficiently.
+
+\subsection{Identification of occupant comfort personality types}
+
+This study identifies personalized comfort profiles of users through data driven methods - which basically cluster users into \emph{types}. This could be used to understand, and even predict, patterns and anomalies in occupant behavior and occupant profiling in the future. Its easy to see how the same methodology could be used to distinguish spaces based on occupant comfort feedback data - to derive comfort profiles of spaces.
+
+\subsection{Limitations}
+It is important to note that the SDE4 building is operational, but still under a defect and liability period. Since a majority of the new building's systems are still undergoing calibration and refinement for full operations in the future, multiple data sources are not integrated into this analysis. Additionally, given the use case for this application, users are most likely to participate only once. We understand that this constrains the comparison of occupant feedback to a point in time for each participant. However, at the end of each tour, the participants are pointed to an advanced spatial recommendation application for flexible working which collects their comfort feedback in different spaces over time - and helps with the comparison and analysis of changing states of occupant comfort. More details regarding the spatial recommendation system and its application would be provided in a future publication.
 
 \section{Conclusion}
+\subsection{Future work}
+\subsection{Acknowledgments}
 
-Preliminary data shows X.
+%Preliminary data shows X.
 
 \begin{itemize}
 	\item Segregation and clustering of users based on thermal comfort personalities
