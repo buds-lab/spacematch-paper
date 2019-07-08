@@ -290,7 +290,9 @@ In parallel, its easy to see how the same methodology could be used to distingui
 \subsection{Recommending a space based on an occupant's past comfort preferences}
 
 Its easy to see how the results from this study could be used to understand, and even predict, patterns and anomalies in an occupant's environmental preferences in flexible workspaces over time.
-Taking this a step further, learning from past comfort preferences of occupants could be used to 'match' them to spaces with suitable environmental profiles---with acceptable temperature, light and noise levels on average---in real time using IoT data, and to test whether this leads to any increase in occupant satisfaction or performance in flexible workplaces as compared to a baseline scenario. 
+
+Taking this a step further, learning from past comfort preferences of occupants could be used to 'match' them to spaces with suitable environmental profiles---with acceptable temperature, light and noise levels on average---in real time using IoT data, to test whether this leads to any increase in occupant satisfaction or performance in flexible workplaces as compared to a baseline scenario. 
+
 Although, this method of suggesting or matching based on past preferences has been widely used in other industries \cite{Recommender, Resnick}, and a previous study has used occupancy data to attempt to optimize the allocation of hot desk spaces using simulation and occupancy sensors \cite{Cooper2017AnData} - a 'spatial recommender' for flexible workspaces would be the first of its kind application in the building industry - to the best of knowledge of the research team.   
 
 
@@ -299,25 +301,36 @@ Although, this method of suggesting or matching based on past preferences has be
 %\subsection{Future learning through diversifying data streams}
 
 \subsection{Limitations}
-It is important to note that the SDE4 building is operational, but still under a defect and liability period. Since a majority of the new building's systems are still undergoing calibration and refinement for full operations in the future, multiple data sources are not integrated into this analysis. Additionally, given the use case for this application, users are most likely to participate only once. We understand that this constrains the comparison of occupant feedback to a point in time for each participant. However, at the end of each tour, the participants are pointed to an advanced spatial recommendation application for flexible working which collects their comfort feedback in different spaces over time - and helps with the comparison and analysis of changing states of occupant comfort. More details regarding the spatial recommendation system and its application would be provided in a future publication.
+It is important to note that the SDE precinct at National University of Singapore is undergoing redevelopment - most precinct buildings, including spaces used for this study, are operational but are either under a defect and liability period or are soon going to be refurbished. Since a majority of the precinct's systems are undergoing calibration and refinement for full operations in the future, multiple data sources cannot not be shared for the purposes of this publication.
+
+Additionally, due to restrictions of personal data protection act(PDPA) any personal data related to research participants such as name, age, sex etc. was not collected for this experiment. Although, the research team accepts that this type of data could provide further insights into individual comfort preferences of occupants, but given the administrative overheads to collect this data, intentionally kept it out from the scope of this publication.         
+
+Lastly, it is important to point out that the research team is simultaneously working on other methods such as wearables - to capture and process more detailed individual comfort preferences from occupants. However, more details regarding these systems, there application and integration with this study would be provided in a future publication.   
+
+%given the use case for this application, users are most likely to participate only once. We understand that this constrains the comparison of occupant feedback to a point in time for each participant. However, at the end of each tour, the participants are pointed to an advanced spatial recommendation application for flexible working which collects their comfort feedback in different spaces over time - and helps with the comparison and analysis of changing states of occupant comfort. More details regarding the spatial recommendation system and its application would be provided in a future publication.
 
 \section{Conclusion}
+This paper describes the pilot implementation of SpaceMatch platform in six zones at SDE, NUS for occupant comfort data collection. Within a month, 1182 environmental feedback momentary assessment surveys of thermal, visual and aural comfort were obtained from 25 participants. This rich data set provides new opportunities for understanding occupant comfort behavior through data driven methods. Within this study, we've demonstrated how data can be used to group occupants into comfort profile types and shown this study as potential stepping stone to other research areas such as comfort profiling of spaces, occupant behavior analysis and correlation identification between various spatiotemporal variables in buildings. 
+Segments of the raw data and analysis code used for this study will be available in an open-access Github repository that includes documentation on the spacematch app\footnote{\url{https://github.com/buds-lab/spacematch_paper}}. The app is a mobile, web-based platform that can be deployed in other locations in collaboration with the authors.
+
 \subsection{Future work}
-\subsection{Acknowledgments}
+The research team is currently working on developing the SpaceMatch 'spatial recommender' system for flexible workspaces. This tool would help people find available working spaces that match their immediate needs in the same way \textregistered{Airbnb} helps people find a place to stay or \textregistered{Uber} helps people find a ride. This system would include advanced features such as a desk recommender (based on time duration, number of desks, noise levels and desk availability), and integration with occupancy, intelligent power plugs and building management system. More details regarding these developments to the SpaceMatch platform and its application would be provided in a future publication. 
+
+%\subsection{Acknowledgments}
 
 %Preliminary data shows X.
 
-\begin{itemize}
-	\item Segregation and clustering of users based on thermal comfort personalities
-    \item Suggesting spaces that match an individuals previous preferences to have an impact on their satisfaction as compared to a baseline level satisfaction for a co working environment
-    \item Design, allocation and management of spaces based on thermal comfort personalities in the future
-\end{itemize}
+%\begin{itemize}
+%	\item Segregation and clustering of users based on thermal comfort personalities
+%    \item Suggesting spaces that match an individuals previous preferences to have an impact on their satisfaction as compared to a baseline level satisfaction for a co working environment
+%    \item Design, allocation and management of spaces based on thermal comfort personalities in the future
+%\end{itemize}
 
-\subsection{Future work}
+%\subsection{Future work}
 
 
 
-\section*{Acknowledgement(s)}
+%\section*{Acknowledgement(s)}
 
 
 \bibliographystyle{unsrtnat}
