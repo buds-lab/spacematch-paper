@@ -160,7 +160,7 @@ For flexible workspace operators, it facilitates merging personalized environmen
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.07]{figures/app.jpg}
-\caption{The application} 
+\caption{The SpaceMatch application: (a) Screens for finding flexible working zones around campus, (b) Dashboard and Info screen for more details regarding each zone, (c) Screens for choosing between options for use desk now or reserve desk for later, (d)Screens for providing feedback for temperature, light and noise variables} 
 \label{app}
 \end{figure}
 
@@ -196,13 +196,13 @@ A pilot study was designed to test SpaceMatch in field conditions with 25 resear
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.8]{figures/pilot.jpg}
-\caption{Pilot implementation setup} 
+\caption{The six flexible working zones for pilot implementation: (a)Photos and map showing \emph{zone-1} on level 6, Building 1, (b)\emph{zone-2} on level 6, Building 1,  (c)\emph{zone-3} on level 6, Building 1,  (d)\emph{zone-4} on level 3, Building 1, (e)\emph{zone-5} on level 2, Building 2, (e)\emph{zone-6} on level 2, Building 2} 
 \label{pilot}
 \end{figure}
 
 Each participant in the experiment used the interactive mobile application to reserve and use work desks as shown in Figure \ref{app}. Users could search for available work desks within two buildings at SDE. Once they chose the building, users could progress to select the room and desk to use. Users were provided with more information about the room and real-time indoor environmental quality through the ``Info`` and ``Dashboard`` features of the application as shown in Figure \ref{app}b. 
 
-The application provided options between using the desk right now or reserving it for later. To start using a desk, users had to scan the desk's QR code label using an inbuilt QR code scanner in the application. A minimum two hour time slot for a work session was provided for each desk booking. Users could also choose to extend their work sessions in two hour multiples as per their requirements using the application. During use, the application prompted users to provide environmental feedback for temperature, light and noise levels through a 3-point scale as shown in Figure \ref{app}d. Prompts were configured such that the application nudged users to provide feedback at the start, finish and once every half an hour of a typical two hour work session. 
+The application provided options between using the desk right now or reserving it for later. To start using a desk, users had to scan the desk QR code label using an inbuilt QR code scanner in the application. A minimum two hour time slot for a work session was provided for each desk booking. Users could also choose to extend their work sessions in two hour multiples as per their requirements using the application. During use, the application prompted users to provide environmental feedback for temperature, light and noise levels through a 3-point scale as shown in Figure \ref{app}d. Prompts were configured such that the application nudged users to provide feedback at the start, finish and once every half an hour of a typical two hour work session. 
 
 
 The data from the users and fixed sensors was aggregated using a cloud-based, time-series database - which served as a platform for data acquisition, storage and error detection as shown in Figure \ref{framework}. The combination of location-based user comfort feedback and fixed environmental sensor data allowed clustering analysis for personalized comfort profiles of users. These two data sources were merged through matching feedback location (spatially localized through desk QR code label), time of feedback collection (timestamp) and user ID (through an in-built anonymous authentication method).     
@@ -210,7 +210,7 @@ The data from the users and fixed sensors was aggregated using a cloud-based, ti
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.1]{figures/framework.jpg}
-\caption{The application framework} 
+\caption{Data exchange framework: (a)desk QR code label, (b)Web based mobile application, (c)IoT based indoor environmental quality sensors, (d)Time series data base} 
 \label{framework}
 \end{figure}
 
@@ -283,9 +283,9 @@ Past studies in thermal comfort research have often referred to five or seven po
 \subsection{Identifying occupant comfort personality types}
 Researchers increasingly adapt data driven methodologies to address challenges of occupant satisfaction, environmental quality and energy efficiency in buildings today \cite{Textmining, occupantcomplaints, IEQandsatisfaction}. This study uses data driven methods to identify personalized comfort profiles of users - clustering users into \emph{types} based on similar environmental preferences as shown in section \ref{Results}. 
 
-Such results could be useful in multiple ways; for one, grouping users with similar environmental preferences could minimize occupant dissatisfaction in workspaces - in turn improving occupant comfort and space \& energy efficiency as shown by previous studies \cite{KAMARULZAMAN2011262}. Next, this method could also enhance the feedback given to designers and operators about future building design features and operating strategies to improve workplace occupant satisfaction and performance \cite{KWON2019356}.
+Such results could be useful in multiple ways; for one, grouping users with similar environmental preferences could improve occupant comfort and space \& energy efficiency as shown by other studies \cite{KAMARULZAMAN2011262}. Next, this method could also enhance the feedback given to designers and operators about future building design features and operating strategies to improve flexible workplace occupant satisfaction and performance \cite{KWON2019356}.
 
-In parallel, its easy to see how the same methodology could be used to distinguish spaces based on occupant comfort feedback data and IoT data - to derive comfort profiles of spaces.
+In parallel, its also easy to see how the same methodology could be used to distinguish spaces based on occupant comfort feedback data and IoT data - to derive comfort profile types of spaces.
 
 %This study identifies personalized comfort profiles of users through data driven methods - clustering users with similar environmental preferences users into \emph{types}. This could be used to understand, and even predict, patterns and anomalies in occupant behavior and occupant profiling in the future. Its easy to see how the same methodology could be used to distinguish spaces based on occupant comfort feedback data - to derive comfort profiles of spaces.
 
@@ -294,9 +294,9 @@ In parallel, its easy to see how the same methodology could be used to distingui
 
 Its easy to see how the results from this study could be used to understand, and even predict, patterns and anomalies in an occupant's environmental preferences in flexible workspaces over time.
 
-Taking this a step further, learning from past comfort preferences of occupants could be used to 'match' them to spaces with suitable environmental profiles---with acceptable temperature, light and noise levels on average---in real time using IoT data, to test whether this leads to any increase in occupant satisfaction or performance in flexible workplaces as compared to a baseline scenario. 
+Taking this a step further, learning from past comfort preferences of occupants could be used to \emph{match} them to spaces with suitable environmental profiles---with acceptable temperature, light and noise levels on average---in real time using IoT data, to test whether this leads to any increase in occupant satisfaction or performance in flexible workplaces as compared to a baseline scenario. 
 
-Although, this method of suggesting or matching based on past preferences has been widely used in other industries \cite{Recommender, Resnick}, and a previous study has used occupancy data to attempt to optimize the allocation of hot desk spaces using simulation and occupancy sensors \cite{Cooper2017AnData} - a 'spatial recommender' for flexible workspaces would be the first of its kind application in the building industry - to the best of knowledge of the research team.   
+Although, this method of suggesting or matching based on past preferences has been widely used in other industries \cite{Recommender, Resnick}, and a previous study has used occupancy data to attempt to optimize the allocation of hot desk spaces using simulation and occupancy sensors \cite{Cooper2017AnData} - a 'spatial recommender' for flexible workspaces would be the first of its kind application in the building industry - to the best of research team's knowledge.   
 
 
 %People would use a smart phone app to reserve a space and then leave comfort feedback in the form of a five-star rating when they finish using the space. This simple feedback on a useful process is similar to the methods that commonly-used apps like Uber and Airbnb utilize. These star ratings are used to annotate collected data from IoT. Figure~\ref{iot-example-annotated} illustrates the same time range as Figure~\ref{iot-example}, however the time range is segmented into zones of utilization.
@@ -306,18 +306,18 @@ Although, this method of suggesting or matching based on past preferences has be
 \subsection{Limitations}
 It is important to note that the SDE precinct at National University of Singapore is undergoing redevelopment - most precinct buildings, including spaces used for this study, are operational but are either under a defect and liability period or are soon going to be refurbished. Since a majority of the precinct's systems are undergoing calibration and refinement for full operations in the future, multiple data sources cannot not be shared for the purposes of this publication.
 
-Additionally, due to restrictions of personal data protection act(PDPA) any personal data related to research participants such as name, age, sex etc. was not collected for this experiment. Although, the research team accepts that this type of data could provide further insights into individual comfort preferences of occupants, but given the administrative overheads to collect this data, intentionally kept it out from the scope of this publication.         
+Additionally, due to restrictions of personal data protection act(PDPA) any personal data related to research participants such as name, age, sex etc. was not collected for this experiment. Although, the research team understands that this type of data could provide further insights into individual comfort preferences of occupants, but given the administrative overheads to collect this data, it was intentionally kept out from the scope of this publication.         
 
 Lastly, it is important to point out that the research team is simultaneously working on other methods such as wearables - to capture and process more detailed individual comfort preferences from occupants. However, more details regarding these systems, there application and integration with this study would be provided in a future publication.   
 
 %given the use case for this application, users are most likely to participate only once. We understand that this constrains the comparison of occupant feedback to a point in time for each participant. However, at the end of each tour, the participants are pointed to an advanced spatial recommendation application for flexible working which collects their comfort feedback in different spaces over time - and helps with the comparison and analysis of changing states of occupant comfort. More details regarding the spatial recommendation system and its application would be provided in a future publication.
 
 \section{Conclusion}
-This paper describes the pilot implementation of SpaceMatch platform in six zones at SDE, NUS for occupant comfort data collection. Within a month, 1182 environmental feedback momentary assessment surveys of thermal, visual and aural comfort were obtained from 25 participants. This rich data set provides new opportunities for understanding occupant comfort behavior through data driven methods. Within this study, we've demonstrated how data can be used to group occupants into comfort profile types and shown this study as potential stepping stone to other research areas such as comfort profiling of spaces, occupant behavior analysis and correlation identification between various spatiotemporal variables in buildings. 
+This paper describes the pilot implementation of SpaceMatch platform in six flexible working zones at SDE, NUS for occupant comfort data collection. Within a month, 1182 environmental feedback momentary assessment surveys of thermal, visual and aural comfort were obtained from 25 participants. This rich data set provides new opportunities for understanding occupant comfort behavior through data driven methods. Within this study, we've demonstrated how data can be used to group occupants into comfort profile types and shown this study as potential stepping stone to other research areas such as comfort profiling of spaces, occupant behavior analysis and correlation identification between various spatiotemporal variables in buildings. 
 %Segments of the raw data and analysis code used for this study will be available in an open-access Github repository that includes documentation on the spacematch app\footnote{\url{https://github.com/buds-lab/spacematch_paper}}. The app is a mobile, web-based platform that can be deployed in other locations in collaboration with the authors.
 
 \subsection{Future work}
-The research team is currently working on developing the SpaceMatch 'spatial recommender' system for flexible workspaces. This tool would help people find available working spaces that match their immediate needs in the same way Airbnb\textsuperscript{\textregistered} helps people find a place to stay or Uber\textsuperscript{\textregistered} helps people find a ride. This system would include advanced features such as a desk recommender (based on time duration, number of desks, noise levels and desk availability), and integration with occupancy, intelligent power plugs and building management system. More details regarding these developments to the SpaceMatch platform and its application would be provided in a future publication. 
+The research team is currently working on developing the SpaceMatch 'spatial recommender' system for flexible workspaces. This tool would help people find available working spaces that match their immediate needs in the same way Airbnb\textsuperscript{\textregistered} helps people find a place to stay or Uber\textsuperscript{\textregistered} helps people find a ride. This system would include advanced features such as a desk recommender (based on time duration, number of desks, noise levels and desk availability), and integration with occupancy, intelligent power plugs and building management systems. More details regarding these developments to the SpaceMatch platform and its application would be provided in a future publication. 
 
 %\subsection{Acknowledgments}
 
