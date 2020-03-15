@@ -17,6 +17,8 @@
 \usepackage{hyperref}
 \hypersetup{colorlinks=false,breaklinks=true}
 
+
+
 %\usepackage[natbibapa,nodoi]{apacite}% Citation support using apacite.sty. Commands using natbib.sty MUST be deactivated first!
 %\setlength\bibhang{12pt}% To set the indentation in the list of references using apacite.sty. Commands using natbib.sty MUST be deactivated first!
 %\renewcommand\bibliographytypesize{\fontsize{10}{12}\selectfont}% To set the list of references in 10 point font using apacite.sty. Commands using natbib.sty MUST be deactivated first!
@@ -35,9 +37,13 @@
 \newtheorem{remark}{Remark}
 \newtheorem{notation}{Notation}
 
+\makeatletter
+\renewcommand{\@biblabel}[1]{[#1]\hfill}
+\makeatother
+
 \begin{document}
 
-\articletype{Manuscript for Submission to \emph{Frontiers of the Built Environemtn} Journal}% Specify the article type or omit as appropriate
+\articletype{Manuscript for Submission to \emph{Frontiers of the Built Environment} Journal}% Specify the article type or omit as appropriate
 
 \title{SpaceMatch: Using environmental preferences and IoT data to match occupants to suitable flexible workspaces}
 
